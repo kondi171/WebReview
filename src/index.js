@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import '../src/assets/fontello/css/fontello.css';
 import '../src/assets/scss/main.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import LandingPage from './components/main_page/LandingPage';
 import Interstellar from './components/movies/Interstellar';
 import Intouchables from './components/movies/Intouchables';
