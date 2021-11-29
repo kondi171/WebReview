@@ -1,0 +1,27 @@
+main {
+    margin-bottom: 4vh;
+    h2 {
+        text-align: center;
+        margin: 2vw;
+        font-size: 64px;
+        color: $mainColor
+    }
+    .library {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .card {
+            margin: 1vw;
+            width: 15vw;
+        }
+        a.btn-primary {
+            background-color: $secondaryColor;
+            border: $darkenColor;
+            transition: .2s;
+            &:hover {
+                background-color: $darkenColor;
+            }
+        }
+    }
+}

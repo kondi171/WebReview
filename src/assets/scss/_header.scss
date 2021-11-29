@@ -1,0 +1,123 @@
+header.main-header {
+    background-image: url(../img/erik-witsoe-GF8VvBgcJ4o-unsplash.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: darken($mainColor,45%);
+    background-blend-mode:darken;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    border-bottom: 2px solid $mainColor;
+    box-shadow: 0px 8px 19px 0px $mainColor;
+    h1 {
+        position: absolute;
+        font-family: $mainFont;
+        top: 10vh;
+        text-align: center;
+        width: 80%;
+        margin: 0 10vw;
+        color: $lightColor;
+        font-size: 10vw;
+        color: $secondaryColor;
+    }
+    .cites {
+        position: absolute;
+        right: 10vh;
+        bottom: 5vh;
+        font-size: 2rem;
+        width: 30%;
+        color: $darkenColor;
+        text-align-last: center;
+        blockquote {
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+            quotes: "\201C""\201D""\2018""\2019";
+            &:before {
+                content: open-quote;
+                font-size: 4em;
+                line-height: 0.1em;
+                margin-right: 0.25em;
+                vertical-align: -0.4em;
+              }
+          }
+    }
+    .text-desktop {
+        position: absolute;
+        display: block;
+        margin: 10vh;
+        top: 30vh;
+        text-align: center;
+        font-size: 3em;
+        width: 83ch; 
+        color: $lightColor;
+        animation: typewriter 4s steps(61); 
+        animation-iteration-count: infinite;
+        overflow:hidden;
+        white-space: nowrap;
+      }
+      .text-mobile {
+        display: none;
+      }
+      @keyframes typewriter {
+        0% {
+          width: 0ch;
+        }
+        80% {
+          width: 61ch;
+        }
+        100% {
+            width: 61ch;
+        }
+      }
+}
+
+header.cut-header {
+  background-image: url(../img/erik-witsoe-GF8VvBgcJ4o-unsplash.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: darken($mainColor,45%);
+  background-blend-mode:darken;
+  border-bottom: 2px solid $mainColor;
+  box-shadow: 0px 8px 19px 0px $mainColor;
+  h1 {
+    font-family: $mainFont;
+    text-align: center;
+    width: 80%;
+    margin: 0 10vw;
+    color: $lightColor;
+    font-size: 10vh;
+    color: $secondaryColor;
+  }
+}
+
+@media (max-width: 1250px) {
+  header.main-header {
+    h1 {
+      font-size: 15vw;
+    }
+    .text-desktop {
+      animation: none;
+      display: none;
+    }
+    .text-mobile {
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      font-size: 24px;
+      color: $lightColor;
+      text-align: center;
+      text-align-last: center;
+    }
+    .cites {
+      width: 60%;
+      font-size: 1rem;
+      blockquote {
+        &:before {
+            font-size: 2em;
+        }
+      }
+    }
+  }
+}
