@@ -78,16 +78,15 @@ header.main-header {
 header.cut-header {
   h1 {
     position: absolute;
-    background-blend-mode: overlay;
-    width: 100%;
+    background-color: black;
+    text-decoration: underline;
     height: 100vh;
-    top: 10%;
     font-family: $mainFont;
     text-align: center;
-    width: 80%;
-    margin: 0 10vw;
+    width: 100%;
     font-size: 20vh;
     color: $secondaryColor;
+    opacity: 0.6;
   }
 }
 
