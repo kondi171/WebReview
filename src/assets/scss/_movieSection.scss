@@ -2,6 +2,8 @@ main.movie {
     img {
         height: 100vh;
         width: 100%;
+        border-bottom: 2px solid $mainColor;
+        box-shadow: 0px 8px 19px 0px $mainColor;
     }
     h2 {
         text-align: left;
@@ -14,6 +16,7 @@ main.movie {
         font-size: 24px;
         font-family: $secondFont;
         .add-review {
+            position: relative;
             background-color: #cecece;
             padding: 20px;
             border-radius: 10px;
@@ -60,10 +63,6 @@ main.movie {
         }
     }
     
-    .carousel-inner {
-        height: 90vh;
-
-    }
     .stars {
         margin-bottom:10px;
         background: #ffffff;
@@ -100,5 +99,88 @@ main.movie {
     .stars input:checked ~ label::before {
         color: #ffa500;
         cursor: pointer;
+    }
+    .feedback-box {
+        position: relative;
+
+    }
+    .msg-success {
+        position: fixed;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0.9;
+        width: 40%;
+        height: 40vh;
+        margin: 0 auto;
+        background-color: #3d913d;
+        border: 4px solid darken(#24a324,30%);
+        border-radius: 15px;
+        h2.success {
+            width: 100%;
+            text-align: center;
+            font-size: 10vh;
+        }
+        h3.success, h4.success {
+            text-align: center;
+            padding: 5px;
+            font-size: 32px;
+            font-family: $secondFont;
+            color: $bgColor;
+        }
+        button {
+            margin-top: 10px;
+            width: 30%;
+            font-size: 24px;
+            background-color: $secondaryColor;
+            border: 2px solid $darkenColor;
+            border-radius: 5px;
+            transition: .2s;
+
+            &:hover {
+                background-color: $darkenColor;
+            }
+        }
+    }
+    .msg-failure {
+        position: fixed;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0.9;
+        width: 40%;
+        height: 40vh;
+        margin: 0 auto;
+        background-color: #be3c3c;
+        border: 4px solid #831e1e;
+        border-radius: 15px;
+ 
+        h2.fail {
+            width: 100%;
+            text-align: center;
+            font-size: 5vh;
+        }
+        h3.fail, h4.fail { 
+            text-align: center;
+            padding: 5px;
+            font-size: 24px;
+            font-family: $secondFont;
+            color: $bgColor;
+        }
+        button {
+            margin-top: 10px;
+            width: 30%;
+            font-size: 24px;
+            background-color: $secondaryColor;
+            border: 2px solid $darkenColor;
+            border-radius: 5px;
+            transition: .2s;
+
+            &:hover {
+                background-color: $darkenColor;
+            }
+        }
     }
 }
