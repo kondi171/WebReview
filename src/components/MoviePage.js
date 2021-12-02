@@ -12,6 +12,7 @@ class MoviePage extends React.Component {
 			dataSent: '',
 			data: [],
 			error: '',
+			start: false,
 		}
 	}
 	componentDidMount() {
@@ -23,42 +24,22 @@ class MoviePage extends React.Component {
 		axios.get('http://localhost/webreview/src/php/showReview.php').then(response => {
 			this.setState({ data: response.data });
 		});
+		this.jumbotron = document.getElementsByClassName('jumbotron-fluid');
+		this.countStars = document.getElementsByClassName('count-stars');
+		this.startInterval = setInterval(() => {
+			this.setState({
+				start: true,
+			});
+		}, 100);
 	}
-
-	handleAddReview = () => {
-		let numberOfJumbotron = 4;
-		const rate = document.getElementById('generalRate');
-		let checkedRadio = document.querySelector('.stars input:checked');
-		const form = document.getElementById('frm');
-		const name = document.getElementById('name').value;
-		const review = document.getElementById('review').value;
-		const jumbotron = document.createElement('div');
-		const container = document.createElement('div');
-		const h1 = document.createElement('h1');
-		const p = document.createElement('p');
-		jumbotron.classList.add('jumbotron');
-		jumbotron.classList.add('jumbotron-fluid');
-		jumbotron.appendChild(container);
-		container.classList.add('container');
-		container.appendChild(h1);
-		h1.classList.add('display-4');
-		this.counter++;
-		if (checkedRadio.value === 1) h1.innerHTML = name + ' <span>★</span>★★★★</h1>';
-		else if (checkedRadio.value === 2) h1.innerHTML = name + ' <span>★★</span>★★★</h1>';
-		else if (checkedRadio.value === 3) h1.innerHTML = name + ' <span>★★★</span>★★</h1>';
-		else if (checkedRadio.value === 4) h1.innerHTML = name + ' <span>★★★★</span>★</h1>';
-		else if (checkedRadio.value === 5) h1.innerHTML = name + ' <span>★★★★★</span></h1>';
-		p.classList.add('lead');
-		p.textContent = review;
-		container.appendChild(p);
-		form.reset();
-		if (this.counter === 1) jumbotron.style = 'float:right;';
-		this.section.prepend(jumbotron);
-		numberOfJumbotron++;
-		let result = 4 + 5 + 5 + 3;
-		let intValueOfRadio = parseInt(checkedRadio.value);
-		result += intValueOfRadio;
-		rate.textContent = "Ogólna ocena: " + result / numberOfJumbotron;
+	componentDidUpdate() {
+		this.numberOfRecents = this.jumbotron.length;
+		if (this.state.start) clearInterval(this.startInterval);
+		if (!this.state.start) {
+			for (let i = 0; i < this.countStars.length; i++) {
+				this.sumOfStars += parseInt(this.countStars[i].textContent.length - 1);
+			}
+		}
 	}
 
 	handleOnSubmit(event) {
@@ -85,11 +66,10 @@ class MoviePage extends React.Component {
 				stars: '',
 				review: "",
 			});
+
 		} else {
 			this.setState({ error: true });
 		}
-
-
 	}
 	handleHideBtnSuccess = () => {
 		this.setState({ dataSent: false });
@@ -97,11 +77,6 @@ class MoviePage extends React.Component {
 	}
 	handleHideBtnFailure = () => {
 		this.setState({ error: false });
-	}
-
-	handleCheck = () => {
-		console.log("STARS: " + this.sumOfStars);
-		console.log("RECENTS: " + this.numberOfRecents);
 	}
 
 	render() {
@@ -115,7 +90,7 @@ class MoviePage extends React.Component {
 					<div className="review">
 						<h2>Nasza Opinia</h2>
 						<p>{this.props.description}</p>
-						<h2 id='generalRate'>Ogólna ocena: {this.sumOfStars}</h2>
+						<h2 id='generalRate'>Ogólna ocena: {(this.sumOfStars / this.numberOfRecents).toFixed(2)}</h2>
 						<div className="add-review">
 							<div className="feedback-box">
 								{this.state.dataSent ?
@@ -161,19 +136,22 @@ class MoviePage extends React.Component {
 								<button onClick={e => this.handleOnSubmit(e)} id="btn" type="button" className="btn btn-primary">Wyślij</button>
 							</form>
 						</div>
-
-						<button onClick={this.handleCheck}>DAWAJ</button>
 						<h2>Recenzje użytkowników</h2>
 						<div id="reviews" className="reviews">
 							<div className="jumbotron-container">
 								{this.state.data.map((result) => {
 									if (result.movie === this.props.name) {
-										this.sumOfStars += parseInt(result.stars) / 2;
-										this.numberOfRecents++;
 										return (
 											<div key={result.id} className="jumbotron jumbotron-fluid">
 												<div className="container">
-													<h1 id="title" className="display-4">{result.username} </h1>
+													<h1 id="title" className="display-4">
+														{result.username}
+														{parseInt(result.stars) === 5 ? <span><span className="count-stars"> ★★★★★</span></span> : <span></span>}
+														{parseInt(result.stars) === 4 ? <span><span className="count-stars"> ★★★★</span><span>★</span></span> : <span></span>}
+														{parseInt(result.stars) === 3 ? <span><span className="count-stars"> ★★★</span><span>★★</span></span> : <span></span>}
+														{parseInt(result.stars) === 2 ? <span><span className="count-stars"> ★★</span><span>★★★</span></span> : <span></span>}
+														{parseInt(result.stars) === 1 ? <span><span className="count-stars"> ★</span><span>★★★★</span></span> : <span></span>}
+													</h1>
 													<p className="lead">{result.review}</p>
 												</div>
 											</div>

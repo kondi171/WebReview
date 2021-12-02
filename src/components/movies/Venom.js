@@ -2,8 +2,7 @@ import Footer from "../main_page/Footer";
 import venom from '../../assets/img/venom/img1.jpg';
 import MoviePage from "../MoviePage";
 
-
-function Venom() {
+const Venom = () => {
 	return (
 		<>
 			<MoviePage

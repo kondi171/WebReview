@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function MovieCard({ name, image, content }) {
+const MovieCard = ({ name, image, content }) => {
     let routeName = '';
     routeName = routeName + '/movie/' + name.toLowerCase();
 

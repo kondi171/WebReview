@@ -4,8 +4,7 @@ import Intouchables from '../../assets/img/posters/intouchables.jpg';
 import Jumanji from '../../assets/img/posters/jumanji.jpg';
 import SanAndreas from '../../assets/img/posters/san_andreas.jpg';
 import Venom from '../../assets/img/posters/venom.jpg';
-function MovieLibrary() {
-
+const MovieLibrary = () => {
     return (
         <main>
             <h2>Biblioteka filmów</h2>

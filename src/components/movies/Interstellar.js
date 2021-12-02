@@ -2,8 +2,7 @@ import Footer from "../main_page/Footer";
 import interstellar from '../../assets/img/interstellar/img1.jpg';
 import MoviePage from "../MoviePage";
 
-function Interstellar() {
-
+const Interstellar = () => {
 	return (
 		<>
 			<MoviePage

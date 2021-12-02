@@ -47,6 +47,9 @@ main.movie {
             }
             span {
                 color: $mainColor;
+                & + span {
+                    color: darken($lightColor,70%);
+                }
             }
             .jumbotron {
                 display: flex;

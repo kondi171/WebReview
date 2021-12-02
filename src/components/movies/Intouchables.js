@@ -2,7 +2,7 @@ import Footer from "../main_page/Footer";
 import intouchables from '../../assets/img/intouchables/img1.jpg';
 import MoviePage from "../MoviePage";
 
-function Intouchables() {
+const Intouchables = () => {
 	return (
 		<>
 			<MoviePage

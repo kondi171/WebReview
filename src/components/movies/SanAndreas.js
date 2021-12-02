@@ -2,7 +2,7 @@ import Footer from "../main_page/Footer";
 import sanandreas from '../../assets/img/san_andreas/img1.jpg';
 import MoviePage from "../MoviePage";
 
-function SanAndreas() {
+const SanAndreas = () => {
 	return (
 		<>
 			<MoviePage

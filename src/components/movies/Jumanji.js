@@ -2,8 +2,8 @@ import Footer from "../main_page/Footer";
 import jumanji from '../../assets/img/jumanji/img1.jpg';
 import MoviePage from "../MoviePage";
 
-function Jumanji() {
 
+const Jumanji = () => {
 	return (
 		<>
 			<MoviePage
