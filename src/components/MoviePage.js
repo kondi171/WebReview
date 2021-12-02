@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const API_PATH = 'http://localhost/webreview/src/php/addReview.php';
 class MoviePage extends React.Component {
 	constructor(props) {
@@ -159,6 +160,10 @@ class MoviePage extends React.Component {
 									} else return null;
 								})}
 							</div>
+						</div>
+						<div className="links">
+							<Link title="Powrót do strony głównej" to="/"><i className='fa fa-home'></i></Link>
+							<Link title="Pomoc" to="/help"><i className="fa fa-info-circle"></i></Link>
 						</div>
 						<div style={{ clear: "both" }}></div>
 					</div>
